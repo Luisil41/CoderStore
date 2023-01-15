@@ -10,7 +10,7 @@
     font-weight: 800;
     font-size: 21px;
     margin: 15px;
-    color: #ffffff;
+    color: #006c8a;
     text-decoration: none;
   }
 
@@ -18,12 +18,12 @@
     font-weight: 800;
     font-size: 21px;
     margin: 15px;
-    color: #ffffff;
+    color: #006c8a;
     text-decoration: none;
   }
   
   .Navbar > .nav-items > a {
-    color: #ffffff;
+    color: #006c8a;
     font-size: 16px;
     text-decoration: none;
     margin: 15px;
@@ -66,6 +66,10 @@
       height: 100%;
       transform: translateX(-100%);
       transition: all .45s;
+    }
+
+    .Navbar > .nav-logo-items {
+      width: 100%;
     }
     
   
