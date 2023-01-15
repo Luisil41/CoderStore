@@ -1,29 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="Navbar">
-      <span className="nav-logo">Regular Riders</span>
+      <span className="nav-logo">
+        {" "}
+        <Link to="/">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/California_125.svg/1200px-California_125.svg.png"
+            style={{ width: 50 }}
+            alt="web-logo"
+          />
+        </Link>
+      </span>
 
-      <div className={`nav-items ${isOpen && "open"}`}>
-        <a href="/home">Motorbikes</a>
-        <a href="/about">Clothing</a>
-        <a href="/service">Routes</a>
-        <a href="/contact">Contact</a>
-        <a href="/contact">FAQ</a>
-      </div>
+      <Link to="/category/motorbikes" className="nav-logo-items">
+        Motorbikes
+      </Link>
+      <Link to="/category/clothing" className="nav-logo-items">
+        Clothing
+      </Link>
 
       <CartWidget />
-
-      <div
-        className={`nav-toggle ${isOpen && "open"}`}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="bar"></div>
-      </div>
     </div>
   );
 };

@@ -11,6 +11,15 @@
     font-size: 21px;
     margin: 15px;
     color: #ffffff;
+    text-decoration: none;
+  }
+
+  .Navbar > .nav-logo-items {
+    font-weight: 800;
+    font-size: 21px;
+    margin: 15px;
+    color: #ffffff;
+    text-decoration: none;
   }
   
   .Navbar > .nav-items > a {
@@ -58,6 +67,7 @@
       transform: translateX(-100%);
       transition: all .45s;
     }
+    
   
     .Navbar > .nav-items > a::before {
         background: transparent;
