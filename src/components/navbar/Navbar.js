@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
+
+  const { totalQuantity } = useContext(CartContext)
+
   return (
     <div className="Navbar">
       <span className="nav-logo">
@@ -24,7 +28,7 @@ const Navbar = () => {
         Clothing
       </Link>
 
-      <CartWidget />
+      <CartWidget quantity={totalQuantity}/>
     </div>
   );
 };

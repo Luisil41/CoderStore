@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./ItemListContainer.css";
-import { getProducts, getProductByCategory } from "../asyncMock";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
@@ -10,17 +11,28 @@ const ItemListContainer = ({ greeting }) => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    //Si hay categoryId hay que solicitar a la API los productos filtrados
-    //Si no se da ese caso el usuario está en el home
-    const asyncFunction = categoryId ? getProductByCategory : getProducts;
+    document.title = "All the products";
+  });
 
-    asyncFunction(categoryId)
-      .then((products) => {
-        setProducts(products);
-      })
-      .catch((error) => {
+  useEffect(() => {
+    (async () => {
+      const productsRef = collection(db, "Items");
+
+      try {
+        const snapshot = await getDocs(productsRef)
+
+        const productsAdapted = snapshot.docs.map(doc => {
+          const fields = doc.data()
+
+          return {id: doc.id, ...fields}
+        })
+
+        setProducts(productsAdapted)
+
+      } catch (error) {
         console.log(error);
-      });
+      }
+    })();
   }, [categoryId]);
 
   return (
